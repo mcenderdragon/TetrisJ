@@ -3,15 +3,16 @@ A selfwritten Tetris game in Java, used to train an AI
 
 ## Features
 It outputs a gzip filed starting with `teris_<numbers>.t7` . I this file are lines representing the choises the player made.
+The are formated like this: ```<field blocks>;<new shape>=<x>;<y>;<rot>```
 For example 
 ```000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001111111000000000000011111111101111101111;1100011000000000=8;26;0```
 
 Each line will contain 3 `;` if a line was full and thus removed, or 5 `;` if this did not happen. 
 If we split this ifformation at each `;` we will have the following data:
-- split[0], usualy 300 chars long, represents the field (10 width, 30 height), each 1 is a block , a 0 is empty space.
-- split[1], usualy 16 chars long, a 4x4 field representing the new block to place
+- <field blocks>, usualy 300 chars long, represents the field (10 width, 30 height), each 1 is a block , a 0 is empty space.
+- <new shape>, usualy 16 chars long, a 4x4 field representing the new block to place
 
-thent here is the `=`, and we can split again at each `;` and will gain the x pos, the y pos and the rotation (0-3, including)
+thent here is the `=`, and we can split again at each `;` and will gain the <x> pos, the <y> pos and the rotation (0-3, including)
 
 ## System args
 
