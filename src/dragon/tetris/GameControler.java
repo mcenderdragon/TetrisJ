@@ -16,12 +16,15 @@ public class GameControler {
     private boolean[][] aktiveBlock;
     private int type = 0;
     private int[][] finishedGrid;
-
-    public GameControler(int weidth, int height, int maxtypes) {
+    private final Main main;
+    
+    public GameControler(Main main, int weidth, int height, int maxtypes) 
+    {
         this.screenW = weidth;
         this.screenH = height;
         this.finishedGrid = new int[weidth][height];
         this.maxTypes = maxtypes;
+        this.main = main;
     }
 
     public void addShape(boolean[][] shape) {
@@ -38,7 +41,7 @@ public class GameControler {
         if (this.isInsideBlocks()) {
             ++this.xPos;
         }
-        Main.update();
+        main.update();
     }
 
     public void shiftRight() 
@@ -53,19 +56,19 @@ public class GameControler {
         if (this.isInsideBlocks()) {
             --this.xPos;
         }
-        Main.update();
+        main.update();
     }
 
     public void rotate() {
         if (this.type == 0) {
             return;
         }
-        Main.logger.rotate();
+        main.logger.rotate();
         this.aktiveBlock = GameControler.rotateAround(this.aktiveBlock.length, this.aktiveBlock[0].length, this.aktiveBlock);
         while (this.xPos + this.aktiveBlock.length > this.screenW) {
             --this.xPos;
         }
-        Main.update();
+        main.update();
     }
 
     public boolean putDown() {
@@ -87,12 +90,12 @@ public class GameControler {
                 return false;
             }
         }
-        Main.update();
+        main.update();
         return true;
     }
 
     public void tick() {
-        Main.logger.onKeyPressed(Main.Keys.NONE);
+        main.logger.onKeyPressed(Main.Keys.NONE);
         if (this.type == 0) {
             this.initNewShape();
             this.xPos = this.screenW / 2;
@@ -100,7 +103,7 @@ public class GameControler {
             if (this.isInsideBlocks()) {
                 throw new IllegalStateException("Game Over!");
             }
-            Main.addScore(1);
+            main.addScore(1);
             return;
         }
         if (!this.putDown()) {
@@ -112,13 +115,13 @@ public class GameControler {
                     this.finishedGrid[w][h] = this.type;
                 }
             }
-            Main.logger.shapeCollided(this.xPos, this.yPos);
+            main.logger.shapeCollided(this.xPos, this.yPos);
             this.aktiveBlock = null;
             this.type = 0;
         }
         this.applyGravity();
         this.removeFullLines();
-        Main.update();
+        main.update();
     }
 
     public void initNewShape() {
@@ -130,8 +133,8 @@ public class GameControler {
         for (int i = 0; i < rot; ++i) {
             this.aktiveBlock = GameControler.rotateAround(this.aktiveBlock.length, this.aktiveBlock[0].length, this.aktiveBlock);
         }
-        Main.logger.onNewShape(this.finishedGrid, this.aktiveBlock);
-        Main.aiServer.blockUpdate();
+        main.logger.onNewShape(this.finishedGrid, this.aktiveBlock);
+        main.aiServer.blockUpdate();
     }
 
     public void removeFullLines() {
@@ -147,8 +150,8 @@ public class GameControler {
             for (x = 0; x < this.screenW; ++x) {
                 this.finishedGrid[x][y] = 0;
             }
-            Main.addScore(100);
-            Main.logger.onRemoveLine();
+            main.addScore(100);
+            main.logger.onRemoveLine();
         }
     }
 

@@ -28,13 +28,16 @@
    public final int blockSize;
    public Color[][] grid;
    
-   public TetrisFrame(final GameControler control)
+   public final Main main;
+   
+   public TetrisFrame(final GameControler control, Main main)
    {
      super("Tetris");
      
      this.grid = new Color[control.screenW][control.screenH];
      setSize(375, 500);
      this.blockSize = (500 / control.screenH);
+     this.main = main;
      
      addKeyListener(new KeyListener()
      {
@@ -49,7 +52,7 @@
  
        public void keyPressed(KeyEvent e)
        {
-         if (Main.remote) {
+         if (main.remote) {
            return;
          }
          switch (e.getKeyCode())
@@ -89,7 +92,7 @@
  
        public void windowClosing(WindowEvent paramWindowEvent)
        {
-         Main.run = false;
+         main.run = false;
        }
        
  
@@ -100,7 +103,9 @@
        public void windowActivated(WindowEvent paramWindowEvent) {}
      });
      setResizable(false);
-     setVisible(true);
+     
+     if(Boolean.getBoolean("dragon.tetris.headless"))
+    	 setVisible(true);
    }
    
    private int lastScore = -1;
@@ -127,13 +132,13 @@
          }
        }
      }
-     if (Main.score != this.lastScore)
+     if (main.score != this.lastScore)
      {
        graph.setColor(Color.WHITE);
        graph.fillRect(this.blockSize * 11, this.blockSize * 4, this.blockSize * 5, this.blockSize * 2);
        graph.setColor(Color.BLACK);
-       graph.drawString("Score: " + Main.score, this.blockSize * 12, this.blockSize * 5);
-       this.lastScore = Main.score;
+       graph.drawString("Score: " + main.score, this.blockSize * 12, this.blockSize * 5);
+       this.lastScore = main.score;
      }
    }
  }

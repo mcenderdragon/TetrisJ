@@ -14,11 +14,13 @@ public class LogGenerator
 	private OutputStream out;
 	private int rotation = 0;
 	private StringBuilder builder;
+	private final Main main;
 	
-	public LogGenerator() throws FileNotFoundException, IOException 
+	public LogGenerator(Main main) throws FileNotFoundException, IOException 
 	{
 		Integer port = Integer.getInteger("dragon.tetris.port", 4404);
 		this.out = new GZIPOutputStream(new FileOutputStream("./teris_" + System.currentTimeMillis() / 1000L+ "_" + port + ".t7"));
+		this.main = main;
 	}
 	
 	public void close() throws IOException
@@ -43,9 +45,9 @@ public class LogGenerator
 	private String currentState(int[][] data)
 	{
 	  String s = "";
-	  for (int y = 0; y < Main.con.screenH; y++)
+	  for (int y = 0; y < main.con.screenH; y++)
 	  {
-		 for (int x = 0; x < Main.con.screenW; x++)
+		 for (int x = 0; x < main.con.screenW; x++)
 		 {
 			s = s + Math.min(1, data[x][y]);
 		 }
