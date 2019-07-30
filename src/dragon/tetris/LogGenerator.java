@@ -16,9 +16,8 @@ public class LogGenerator
 	private StringBuilder builder;
 	private final Main main;
 	
-	public LogGenerator(Main main) throws FileNotFoundException, IOException 
+	public LogGenerator(Main main, int port) throws FileNotFoundException, IOException 
 	{
-		Integer port = Integer.getInteger("dragon.tetris.port", 4404);
 		this.out = new GZIPOutputStream(new FileOutputStream("./teris_" + System.currentTimeMillis() / 1000L+ "_" + port + ".t7"));
 		this.main = main;
 	}

@@ -69,7 +69,7 @@ public class Main
 	       con.addShape(new boolean[][] { { false, true, true }, { true, true ,false} });
 	       frame = new TetrisFrame(con, this);
 	       
-	       logger = new LogGenerator(this);
+	       logger = new LogGenerator(this, port);
 	       aiServer = new AIConnection(port, this);
 	       aiServer.start();
 	 
