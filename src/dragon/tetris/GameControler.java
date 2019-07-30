@@ -3,9 +3,6 @@
  */
 package dragon.tetris;
 
-import dragon.tetris.AIConnection;
-import dragon.tetris.LogGenerator;
-import dragon.tetris.Main;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,7 +12,7 @@ public class GameControler {
     public final int maxTypes;
     public int xPos = 0;
     public int yPos = 0;
-    private ArrayList<boolean[][]> blocks = new ArrayList();
+    private ArrayList<boolean[][]> blocks = new ArrayList<>();
     private boolean[][] aktiveBlock;
     private int type = 0;
     private int[][] finishedGrid;
@@ -44,12 +41,13 @@ public class GameControler {
         Main.update();
     }
 
-    public void shiftRight() {
-        int m;
+    public void shiftRight() 
+    {
         if (this.type == 0) {
             return;
-        }
-        if ((m = ++this.xPos + this.aktiveBlock.length) > this.screenW) {
+        } 
+        int m = ++this.xPos + this.aktiveBlock.length;
+        if ((m) > this.screenW) {
             this.xPos = this.screenW - this.aktiveBlock.length;
         }
         if (this.isInsideBlocks()) {
@@ -62,6 +60,7 @@ public class GameControler {
         if (this.type == 0) {
             return;
         }
+        Main.logger.rotate();
         this.aktiveBlock = GameControler.rotateAround(this.aktiveBlock.length, this.aktiveBlock[0].length, this.aktiveBlock);
         while (this.xPos + this.aktiveBlock.length > this.screenW) {
             --this.xPos;
@@ -173,9 +172,9 @@ public class GameControler {
     public boolean isInsideBlocks() {
         for (int x = 0; x < this.aktiveBlock.length; ++x) {
             for (int y = 0; y < this.aktiveBlock[x].length; ++y) {
-                int w;
-                int h;
-                if (!this.aktiveBlock[x][y] || this.finishedGrid[w = x + this.xPos][h = y + this.yPos] == 0) continue;
+                int w = x + this.xPos;
+                int h = y + this.yPos;
+                if (!this.aktiveBlock[x][y] || this.finishedGrid[w][h] == 0) continue;
                 return true;
             }
         }

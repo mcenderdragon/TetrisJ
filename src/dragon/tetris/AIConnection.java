@@ -1,10 +1,7 @@
  package dragon.tetris;
  
  import java.net.ServerSocket;
- import java.net.Socket;
-import java.util.Map.Entry;
-
-import org.omg.CosNaming.IstringHelper;
+import java.net.Socket;
  
  public class AIConnection implements Runnable
  {
@@ -80,7 +77,7 @@ import org.omg.CosNaming.IstringHelper;
 /*  75 */           for (int i = 0; i < r; i++)
 /*     */           {
 /*  77 */             Main.con.rotate();
-/*  78 */          
+/*  78 */             
 /*     */           }
 					Main.doTick = true;
 /*     */         }

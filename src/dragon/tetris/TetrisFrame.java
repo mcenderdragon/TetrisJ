@@ -55,19 +55,15 @@
          switch (e.getKeyCode())
          {
          case 38: 
-           Main.logger.onKeyPressed(Main.Keys.UP);
            control.rotate();
            break;
          case 37: 
-           Main.logger.onKeyPressed(Main.Keys.LEFT);
            control.shiftLeft();
            break;
          case 39: 
-           Main.logger.onKeyPressed(Main.Keys.RIGHT);
            control.shiftRight();
            break;
          case 40: 
-           Main.logger.onKeyPressed(Main.Keys.LEFT);
            control.putDown();
            break;
          
