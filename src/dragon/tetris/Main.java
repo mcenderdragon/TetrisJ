@@ -80,8 +80,8 @@
          }
        }
      }
-     
-     frame.render();
+     if(frame.isVisible())
+    	 frame.render();
    }
    
    public static void addScore(int score)
