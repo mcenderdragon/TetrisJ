@@ -84,8 +84,11 @@ public class AIConnection implements Runnable
 /*  77 */             main.con.rotate();
 /*  78 */             
 /*     */           }
-					main.doTick = true;
 /*     */         }
+					while(!this.update)
+					{
+						main.con.tick();
+					}
 /*     */       }
 /*     */       
 /*     */ 
