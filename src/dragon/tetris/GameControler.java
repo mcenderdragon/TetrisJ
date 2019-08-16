@@ -196,6 +196,8 @@ public class GameControler {
                     if (!this.aktiveBlock[x][y]) continue;
                     int w = x + this.xPos;
                     int h = y + this.yPos;
+                    if(h>=this.screenH)
+                    	break;
                     done[w][h] = this.type;
                 }
             }

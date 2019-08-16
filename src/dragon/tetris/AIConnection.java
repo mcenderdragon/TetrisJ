@@ -128,6 +128,7 @@ public class AIConnection implements Runnable
 /*     */     {
 /* 118 */       e.printStackTrace();
 /* 119 */       main.remote = false;
+				main.run = false;
 /*     */     }
 	}
 	
