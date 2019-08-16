@@ -104,7 +104,7 @@
      });
      setResizable(false);
      
-     if(Boolean.getBoolean("dragon.tetris.headless"))
+     //if(Boolean.getBoolean("dragon.tetris.headless"))
     	 setVisible(true);
    }
    

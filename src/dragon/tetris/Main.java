@@ -75,13 +75,17 @@ public class Main
 	 
 	       while (run)
 	       {
-	    	   try
+	    	   if(!remote)
 	    	   {
-	    		   Thread.sleep(remote ? 1 : 750);
+	    		   try
+		    	   {
+		    		   Thread.sleep(750);
+		    	   }
+		    	   catch (InterruptedException e) {
+		    		   e.printStackTrace();
+		    	   }
 	    	   }
-	    	   catch (InterruptedException e) {
-	    		   e.printStackTrace();
-	    	   }
+	    	   
 	    	   if (doTick) {
 	    		   con.tick();
 	    	   }
