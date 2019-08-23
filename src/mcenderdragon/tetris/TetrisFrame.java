@@ -1,4 +1,4 @@
- package dragon.tetris;
+ package mcenderdragon.tetris;
  
  import java.awt.Color;
  import java.awt.Frame;
@@ -104,7 +104,7 @@
      });
      setResizable(false);
      
-     //if(Boolean.getBoolean("dragon.tetris.headless"))
+     if(!Boolean.getBoolean("dragon.tetris.headless"))
     	 setVisible(true);
    }
    

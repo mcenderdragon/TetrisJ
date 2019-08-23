@@ -1,4 +1,4 @@
-package dragon.tetris;
+package mcenderdragon.tetris;
  
 import java.awt.Color;
 import java.io.IOException;
@@ -125,8 +125,8 @@ public class Main
    
    public void addScore(int score)
    {
-     score += score;
-     System.out.println(score);
+     this.score += score;
+     System.out.println(this.score);
    }
    
    public static enum Keys

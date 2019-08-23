@@ -1,4 +1,4 @@
-package dragon.tetris;
+package mcenderdragon.tetris;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -126,7 +126,7 @@ public class AIConnection implements Runnable
 /*     */     }
 /*     */     catch (Exception e)
 /*     */     {
-/* 118 */       e.printStackTrace();
+/* 118 */       System.err.println(e);e.printStackTrace();
 /* 119 */       main.remote = false;
 				main.run = false;
 /*     */     }

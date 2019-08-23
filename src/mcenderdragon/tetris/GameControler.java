@@ -1,7 +1,7 @@
 /*
  * Decompiled with CFR 0.139.
  */
-package dragon.tetris;
+package mcenderdragon.tetris;
 
 import java.util.ArrayList;
 import java.util.Arrays;
