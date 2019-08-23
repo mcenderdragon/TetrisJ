@@ -27,3 +27,6 @@ The amount of simultaneous games. each game has its own port (each incremented b
 
 ### dragon.tetris.headless, default false
 Do not create/show any window
+
+### dragon.tetris.seed, default random number
+this seed is used for all random instances
