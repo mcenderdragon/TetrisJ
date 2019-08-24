@@ -100,7 +100,8 @@ public class GameControler {
 		return true;
 	}
 
-	public void tick() {
+	public void tick() 
+	{
 		main.logger.onKeyPressed(Main.Keys.NONE);
 		if (this.type == 0) {
 			this.initNewShape();
@@ -112,14 +113,18 @@ public class GameControler {
 			main.addScore(1);
 			return;
 		}
-		if (!this.putDown()) {
-			for (int x = 0; x < this.aktiveBlock.length; ++x) {
-				for (int y = 0; y < this.aktiveBlock[x].length; ++y) {
+		if (!this.putDown()) 
+		{
+			for (int x = 0; x < this.aktiveBlock.length; ++x) 
+			{
+				for (int y = 0; y < this.aktiveBlock[x].length; ++y) 
+				{
 					if (!this.aktiveBlock[x][y])
 						continue;
 					int w = x + this.xPos;
 					int h = y + this.yPos;
-					this.finishedGrid[w][h] = this.type;
+					if(h < this.screenH)
+						this.finishedGrid[w][h] = this.type;
 				}
 			}
 			main.logger.shapeCollided(this.xPos, this.yPos);
