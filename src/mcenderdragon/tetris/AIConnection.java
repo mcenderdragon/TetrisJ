@@ -126,7 +126,15 @@ public class AIConnection implements Runnable
 /*     */     }
 /*     */     catch (Exception e)
 /*     */     {
-/* 118 */       System.err.println(e);
+				if( e instanceof IllegalStateException)
+				{
+					System.err.println(e);
+				}
+				else
+				{
+					e.printStackTrace();
+				}
+/* 118 */       
 /* 119 */       main.remote = false;
 				main.run = false;
 /*     */     }
